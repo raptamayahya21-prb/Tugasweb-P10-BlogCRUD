@@ -1,59 +1,178 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📖 DevJournal — Blog CRUD Laravel (Tugas Rutin 10)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
+[![PHP](https://img.shields.io/badge/PHP-8.2%2B-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
+[![Tests](https://img.shields.io/badge/Tests-10%2F10%20Passed-6BD957?style=for-the-badge&logo=checkmarx&logoColor=white)](tests/Feature/PostCrudTest.php)
+[![Theme](https://img.shields.io/badge/Theme-Fresh%20Green%20%236BD957-6BD957?style=for-the-badge)](claude-ui-spec.md)
 
-## About Laravel
+Aplikasi web **Blog Tech & Engineering (DevJournal)** yang dibangun dengan arsitektur **Model-View-Controller (MVC)** pada framework **Laravel 12**. Proyek ini dibuat untuk memenuhi seluruh kriteria dan fitur bonus pada **Tugas Rutin Pertemuan 10 — Pemrograman Web**.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🎯 Gambaran Proyek
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**DevJournal** adalah platform blog artikel teknologi dan catatan rekayasa perangkat lunak (*software engineering*) yang mengusung gaya estetika *Warm Editorial Intellectual* dengan warna aksen hijau segar (`#6BD957`).
 
-## Learning Laravel
+Pengguna dapat mengelola seluruh siklus hidup artikel melalui operasi **CRUD (Create, Read, Update, Delete)** dengan standar RESTful Resource routing, validasi data berlapis, proteksi keamanan token CSRF, retensi input form, serta sistem unggah media sampul.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 📋 Matriks Pemenuhan Kriteria Tugas
 
-## Laravel Sponsors
+### ✅ Kriteria Wajib (8/8 Selesai)
+1. **`Route::resource('posts')` + Named Routes:**  
+   Rute resource tunggal yang otomatis memetakan 7 metode HTTP standar (`posts.index`, `posts.create`, `posts.store`, `posts.show`, `posts.edit`, `posts.update`, `posts.destroy`).
+2. **`PostController` Resource (7 Methods):**  
+   Implementasi logika controller terstruktur dan bersih pada ke-7 method resource standar.
+3. **Blade Master Layout (`@extends` & `@yield`):**  
+   Kerangka antarmuka utama di `resources/views/layouts/app.blade.php` dengan direktif `@yield('title')` dan `@yield('content')`.
+4. **Minimal 2 Komponen Blade Kustom:**  
+   - `<x-alert>`: Komponen pesan notifikasi dinamis untuk status aksi.
+   - `<x-card>`: Komponen kartu artikel dengan cover, label kategori, ringkasan, dan tombol aksi.
+5. **Validasi Request & Error Penanganan:**  
+   Pesan kesalahan per field menggunakan `@error(...)` dan nilai lama input dipertahankan dengan fungsi `old()`.
+6. **Flash Session Message:**  
+   Pesan notifikasi sukses/gagal tersimpan dalam session (`session('success')`) setelah setiap operasi CRUD.
+7. **Keamanan Formulir (`@csrf` & Method Spoofing):**  
+   Proteksi token Cross-Site Request Forgery di semua formulir, `@method('PUT')` untuk update data, dan `@method('DELETE')` untuk penghapusan.
+8. **Route Model Binding & Pagination:**  
+   Penyuntikan model otomatis `Post $post` di Controller serta penomoran halaman data (`paginate(6)`) dengan `{{ $posts->links() }}`.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### ⭐ Fitur Bonus (3/3 Selesai)
+1. **🔍 Pencarian Real-Time (Search):**  
+   Pencarian artikel berdasarkan judul, kategori, atau isi konten dengan persistensi query string (`?search=...`).
+2. **🗑️ Soft Delete:**  
+   Penggunaan trait `SoftDeletes` dan kolom `deleted_at`, sehingga artikel yang dihapus tetap aman di basis data dan tidak lenyap secara permanen.
+3. **🖼️ Upload Gambar Sampul:**  
+   Mendukung pengunggahan berkas gambar (JPEG, PNG, JPG, WEBP, GIF max 2MB) ke penyimpanan publik (`storage/app/public/posts`) lengkap dengan fitur pratinjau (*live preview*).
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## 🛠️ Struktur Berkas Utama
 
-## Contributing
+```text
+Blok-CRUD/
+├── app/
+│   ├── Http/Controllers/
+│   │   └── PostController.php          # 7 Resource methods + validasi + upload
+│   └── Models/
+│       └── Post.php                    # Model dengan SoftDeletes & Accessor
+├── database/
+│   ├── migrations/
+│   │   └── ..._create_posts_table.php  # Skema tabel posts + softDeletes
+│   └── seeders/
+│       └── DatabaseSeeder.php          # Seeder 8 artikel tech realistis
+├── resources/
+│   └── views/
+│       ├── components/
+│       │   ├── alert.blade.php         # <x-alert> flash notification
+│       │   └── card.blade.php          # <x-card> post article card
+│       ├── layouts/
+│       │   └── app.blade.php           # Master layout + Fresh Green CSS Tokens
+│       └── posts/
+│           ├── index.blade.php         # Katalog artikel, search bar & pagination
+│           ├── create.blade.php        # Form tambah artikel & live image preview
+│           ├── edit.blade.php          # Form edit artikel & @method('PUT')
+│           └── show.blade.php          # Halaman baca detail & related posts
+├── routes/
+│   └── web.php                         # Route::resource('posts')
+└── tests/Feature/
+    └── PostCrudTest.php                # 10 Test cases lengkap untuk validasi fitur
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## 🚀 Panduan Menjalankan Proyek Secara Lokal
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Prasyarat
+- PHP >= 8.2
+- Composer
+- Laragon / XAMPP
 
-## Security Vulnerabilities
+### Langkah Instalasi
+1. **Clone repositori:**
+   ```bash
+   git clone https://github.com/raptamayahya21-prb/TugasWeb-P10-BlogCRUD.git
+   cd TugasWeb-P10-BlogCRUD
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+2. **Instal dependensi Composer:**
+   ```bash
+   composer install
+   ```
 
-## License
+3. **Salin konfigurasi environment:**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+4. **Hubungkan storage publik:**
+   ```bash
+   php artisan storage:link
+   ```
+
+5. **Jalankan migrasi database & seeding artikel awal:**
+   ```bash
+   php artisan migrate --seed
+   ```
+
+6. **Jalankan server aplikasi:**
+   ```bash
+   php artisan serve
+   ```
+   Buka browser di: **`http://127.0.0.1:8000/posts`**
+
+---
+
+## 🧪 Pengujian Otomatis (*Automated Testing*)
+
+Proyek ini telah dilengkapi dengan unit dan feature testing komprehensif menggunakan PHPUnit:
+
+```bash
+php artisan test
+```
+
+### Hasil Test:
+```text
+PASS  Tests\Unit\ExampleTest
+✓ that true is true
+
+PASS  Tests\Feature\ExampleTest
+✓ the application returns a successful response
+
+PASS  Tests\Feature\PostCrudTest
+✓ can view posts index and search
+✓ can view create post page
+✓ post creation requires validation
+✓ can store new post with image
+✓ can show post details
+✓ can view edit post page
+✓ can update post
+✓ can soft delete post
+
+Tests:    10 passed (35 assertions)
+Duration: 0.90s
+```
+
+---
+
+## 📌 Daftar Rute Aplikasi (`Route List`)
+
+| HTTP Method | URI | Route Name | Action Controller |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/` | - | Redirect ke `/posts` |
+| `GET` | `/posts` | `posts.index` | `PostController@index` |
+| `GET` | `/posts/create` | `posts.create` | `PostController@create` |
+| `POST` | `/posts` | `posts.store` | `PostController@store` |
+| `GET` | `/posts/{post}` | `posts.show` | `PostController@show` |
+| `GET` | `/posts/{post}/edit` | `posts.edit` | `PostController@edit` |
+| `PUT` | `/posts/{post}` | `posts.update` | `PostController@update` |
+| `DELETE` | `/posts/{post}` | `posts.destroy` | `PostController@destroy` |
+
+---
+
+## 👨‍💻 Identitas Pembuat & Repositori
+- **Nama Repositori:** `TugasWeb-P10-BlogCRUD`
+- **Mata Kuliah:** Pemrograman Web (Pertemuan 10 — Blog CRUD Laravel)
+- **Lisensi:** [MIT License](LICENSE)
