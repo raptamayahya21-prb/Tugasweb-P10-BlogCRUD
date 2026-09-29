@@ -26,12 +26,12 @@
             
             --border-default: #E5E2D9;
             --border-subtle: #ECE9E2;
-            --border-focus: #D97757;
+            --border-focus: #6BD957;
             
-            --accent-primary: #D97757;
-            --accent-hover: #C96646;
-            --accent-subtle: #F7ECE6;
-            --accent-dark: #8F3A22;
+            --accent-primary: #6BD957;
+            --accent-hover: #46C946;
+            --accent-subtle: #EBF8EA;
+            --accent-dark: #2B7A22;
             
             --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
             --font-serif: 'Lora', Georgia, serif;
@@ -64,11 +64,11 @@
                 
                 --border-default: #35332C;
                 --border-subtle: #2D2B26;
-                --border-focus: #E28C6E;
+                --border-focus: #7CE06A;
                 
-                --accent-primary: #D97757;
-                --accent-hover: #E28C6E;
-                --accent-subtle: #38241C;
+                --accent-primary: #7CE06A;
+                --accent-hover: #8EF07C;
+                --accent-subtle: #1E331B;
             }
         }
 
@@ -144,7 +144,7 @@
             font-family: var(--font-mono);
             font-size: 1.05rem;
             font-weight: 700;
-            box-shadow: 0 2px 6px rgba(217, 119, 87, 0.35);
+            box-shadow: 0 2px 6px rgba(107, 217, 87, 0.35);
         }
 
         .header-actions {
@@ -172,13 +172,13 @@
         .btn-primary {
             background-color: var(--accent-primary);
             color: var(--text-inverse);
-            box-shadow: 0 2px 6px rgba(217, 119, 87, 0.25);
+            box-shadow: 0 2px 6px rgba(107, 217, 87, 0.25);
         }
 
         .btn-primary:hover {
             background-color: var(--accent-hover);
             transform: translateY(-1px);
-            box-shadow: 0 4px 10px rgba(217, 119, 87, 0.35);
+            box-shadow: 0 4px 10px rgba(107, 217, 87, 0.35);
         }
 
         .btn-outline {
@@ -454,7 +454,7 @@
         .form-control:focus {
             outline: none;
             border-color: var(--border-focus);
-            box-shadow: 0 0 0 3px rgba(217, 119, 87, 0.15);
+            box-shadow: 0 0 0 3px rgba(107, 217, 87, 0.18);
         }
 
         .form-control.is-invalid {

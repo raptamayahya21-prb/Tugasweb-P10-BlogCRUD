@@ -57,7 +57,7 @@
 
         <!-- Author Meta Box -->
         <div style="display: flex; align-items: center; gap: 0.85rem; padding-top: 1rem; border-top: 1px solid var(--border-subtle);">
-            <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #D97757, #8F3A22); color: white; display: grid; place-items: center; font-weight: 700; font-family: var(--font-mono);">
+            <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #6BD957, #2B7A22); color: white; display: grid; place-items: center; font-weight: 700; font-family: var(--font-mono);">
                 DJ
             </div>
             <div>
